@@ -54,7 +54,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - vendor
   - "*.sh"
 
 after_footer_scripts:
   - /assets/css/custom.css
+
+  
