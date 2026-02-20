@@ -1328,18 +1328,9 @@ body { font-family: 'Public Sans', 'Helvetica Neue', Arial, sans-serif; backgrou
 
 .archive h1.archive__title { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; border-bottom: 2px solid var(--black); padding-bottom: 0.5rem; }
 
-.grid__wrapper {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
+.grid__wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
 
-.grid__item {
-  float: none !important;
-  width: auto !important;
-  margin-left: 0 !important;
-  background: var(--white); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
+.grid__item { background: var(--white); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
 .grid__item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); border-color: var(--blue-mid); }
 .grid__item .archive__item-teaser { height: 180px; overflow: hidden; background: var(--black); }
 .grid__item .archive__item-teaser img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
