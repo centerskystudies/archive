@@ -1,0 +1,13 @@
+.grid__wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin-top: 1.5rem !important;
+}
+
+.grid__item {
+  float: none !important;
+  width: auto !important;
+  margin-left: 0 !important;
+  clear: none !important;
+}
