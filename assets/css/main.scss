@@ -1,0 +1,385 @@
+---
+# Required front matter for Jekyll to process this file
+---
+
+@import "minimal-mistakes/skins/contrast";
+@import "minimal-mistakes";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CENTER FOR SKY STUDIES — Custom Theme
+// All colors sourced from original build.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── TOKENS ───────────────────────────────────────────────────────────────────
+:root {
+  --blue:     #248bcb;
+  --blue-mid: #79bfe4;
+  --gray:     #f1f1f0;
+  --black:    #000000;
+  --yellow:   #f4ce11;
+  --red:      #ed2024;
+  --white:    #ffffff;
+  --ink:      #111111;
+  --mid:      #666666;
+  --border:   #e2e2e0;
+}
+
+// ── GLOBAL ────────────────────────────────────────────────────────────────────
+body {
+  font-family: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+}
+
+// ── MASTHEAD / HEADER ─────────────────────────────────────────────────────────
+.masthead {
+  background: var(--blue) !important;
+  border-bottom: 3px solid var(--blue) !important;
+
+  .masthead__inner-wrap {
+    background: var(--blue);
+  }
+
+  a, .masthead__menu-item {
+    color: rgba(255,255,255,0.85) !important;
+
+    &:hover {
+      color: var(--white) !important;
+    }
+  }
+
+  .site-logo img {
+    max-height: 44px;
+    width: auto;
+  }
+
+  .site-title {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white) !important;
+  }
+
+  // Search input in header
+  .search__toggle {
+    color: rgba(255,255,255,0.7) !important;
+    &:hover { color: var(--white) !important; }
+  }
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
+.greedy-nav {
+  background: var(--blue) !important;
+
+  a {
+    color: rgba(255,255,255,0.75) !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    &:hover { color: var(--white) !important; }
+  }
+
+  .visible-links a::before {
+    background: var(--yellow) !important;
+  }
+}
+
+// ── SIDEBAR ───────────────────────────────────────────────────────────────────
+.sidebar {
+  background: var(--gray);
+  border-right: 1px solid var(--border);
+
+  .nav__list {
+    .nav__item a {
+      font-size: 0.8rem;
+      color: var(--mid);
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      transition: all 0.15s;
+
+      &:hover, &.active {
+        color: var(--blue);
+        border-left-color: var(--blue);
+        background: rgba(36,139,203,0.06);
+      }
+    }
+  }
+}
+
+// ── HERO / PAGE HEADER ────────────────────────────────────────────────────────
+.page__hero--overlay {
+  background-color: var(--black) !important;
+
+  .page__title {
+    color: var(--white);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+
+  .page__meta {
+    color: rgba(255,255,255,0.5);
+  }
+}
+
+// ── CARD GRID (archive index) ─────────────────────────────────────────────────
+.archive {
+  h1.archive__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 0.5rem;
+  }
+}
+
+.grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.grid__item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-color: var(--blue-mid);
+  }
+
+  // The teaser (cover) image
+  .archive__item-teaser {
+    height: 180px;
+    overflow: hidden;
+    background: var(--black);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img { transform: scale(1.04); }
+  }
+
+  // Card body
+  .archive__item-body {
+    padding: 1rem 1.1rem 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .archive__item-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+
+    a {
+      color: var(--ink) !important;
+      text-decoration: none;
+
+      &:hover { color: var(--blue) !important; }
+    }
+  }
+
+  // Domain line (replaces date)
+  .archive__item-domain {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .archive__item-excerpt {
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  // Tags at bottom of card
+  .archive__item-tags {
+    margin-top: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+}
+
+// ── TAG PILLS ─────────────────────────────────────────────────────────────────
+.tag-pill {
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(36,139,203,0.3);
+  color: var(--blue-mid);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.15s;
+
+  &:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+}
+
+// Taxonomy (tag/category) page badges
+.page__taxonomy-item {
+  background: transparent !important;
+  border: 1px solid rgba(36,139,203,0.35) !important;
+  color: var(--blue) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+
+  &:hover {
+    background: var(--blue) !important;
+    color: var(--white) !important;
+  }
+}
+
+// ── SINGLE CARD PAGE ──────────────────────────────────────────────────────────
+.page__content {
+  h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: var(--blue);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--blue);
+    background: var(--gray);
+    padding: 1rem 1.25rem;
+    margin: 1.75rem 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--mid);
+
+    p { margin: 0; color: var(--mid); }
+  }
+
+  ul, ol {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1rem;
+
+    li { margin-bottom: 0.35rem; }
+  }
+}
+
+// ── CARD DOMAIN LINE (single page) ───────────────────────────────────────────
+.card-domain-line {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+// ── CONNECTED ENTRIES ─────────────────────────────────────────────────────────
+.connected-entries {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--black);
+
+  .connected-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+
+  .connected-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .connected-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.15s;
+
+    &:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(36,139,203,0.04);
+    }
+  }
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+.search-content {
+  .archive__item-title a { color: var(--ink) !important; }
+}
+
+// ── FOOTER ────────────────────────────────────────────────────────────────────
+.page__footer {
+  background: var(--black) !important;
+  color: rgba(255,255,255,0.4) !important;
+  border-top: 3px solid var(--blue);
+  font-size: 0.72rem;
+
+  a { color: var(--blue-mid) !important; }
+}
+
+// ── UTILITY: no-image card placeholder ───────────────────────────────────────
+.archive__item-teaser--none {
+  height: 6px;
+  background: var(--blue);
+  display: block;
+}
+
+// ── RESPONSIVE ───────────────────────────────────────────────────────────────
+@media (max-width: 600px) {
+  .grid__wrapper {
+    grid-template-columns: 1fr;
+  }
+}

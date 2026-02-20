@@ -1,0 +1,71 @@
+---
+layout: home
+title: "Archive"
+author_profile: false
+header:
+  overlay_color: "#000000"
+  overlay_filter: "0"
+  og_image: /assets/images/logo.svg
+---
+
+<div class="archive">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid #000;padding-bottom:0.6rem;margin-bottom:0.25rem;">
+    <h2 class="archive__title">All Entries</h2>
+    <span style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#666;">
+      {{ site.cards | size }} entries
+    </span>
+  </div>
+</div>
+
+{% comment %}
+  Sort cards by date descending, then render as a card grid.
+  Each card's teaser image is set via `header.teaser` in the card's front matter.
+{% endcomment %}
+
+{% assign cards_by_date = site.cards | sort: "date" | reverse %}
+
+<div class="grid__wrapper">
+  {% for card in cards_by_date %}
+    <div class="grid__item">
+      <article class="archive__item">
+
+        {% comment %} Cover image — set header.teaser in the card's front matter {% endcomment %}
+        {% if card.header.teaser %}
+          <a href="{{ card.url | relative_url }}">
+            <div class="archive__item-teaser">
+              <img src="{{ card.header.teaser | relative_url }}" alt="{{ card.title }}">
+            </div>
+          </a>
+        {% else %}
+          <div class="archive__item-teaser--none"></div>
+        {% endif %}
+
+        <div class="archive__item-body">
+
+          {% if card.domain %}
+            <div class="archive__item-domain">{{ card.domain }}</div>
+          {% endif %}
+
+          <h2 class="archive__item-title" itemprop="headline">
+            <a href="{{ card.url | relative_url }}" rel="permalink">{{ card.title }}</a>
+          </h2>
+
+          {% if card.excerpt %}
+            <p class="archive__item-excerpt" itemprop="description">
+              {{ card.excerpt | strip_html | truncate: 140 }}
+            </p>
+          {% endif %}
+
+          {% if card.tags %}
+            <div class="archive__item-tags">
+              {% for tag in card.tags %}
+                <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="tag-pill">{{ tag }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+      </article>
+    </div>
+  {% endfor %}
+</div>
