@@ -9,24 +9,40 @@ header:
 <style>
   .css-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
     margin-top: 1.5rem;
-    max-width: 100%;
   }
   .css-card {
     background: #fff;
-    border: 1px solid #e2e2e0;
-    border-radius: 3px;
-    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .css-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    border-color: #79bfe4;
+    background: var(--gray);
+    transform: none;
+    box-shadow: none;
+    border-color: inherit;
+  }
+  .css-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+  }
+  .css-card:hover::after {
+    transform: scaleX(1);
   }
   .css-card-img {
     height: 180px;
@@ -40,85 +56,64 @@ header:
     display: block;
   }
   .css-card-bar {
-    height: 4px;
-    background: #248bcb;
+    height: 0;
   }
   .css-card-body {
-    padding: 1rem 1.1rem 1.25rem;
+    padding: 1.5rem 1.75rem 1.75rem;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
   .css-card-domain {
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: #248bcb;
+    color: var(--blue);
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
   }
   .css-card-title {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: -0.01em;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
   }
   .css-card-title a {
-    color: #111 !important;
+    color: #000 !important;
     text-decoration: none !important;
   }
   .css-card-title a:hover {
-    color: #248bcb !important;
+    color: #000 !important;
   }
   .css-card-excerpt {
     font-size: 0.82rem;
-    color: #666;
-    line-height: 1.6;
+    color: var(--mid);
+    line-height: 1.65;
     flex: 1;
+    font-weight: 300;
   }
   .css-card-tags {
-    margin-top: 0.85rem;
+    margin-top: 1.1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
   }
   .css-tag {
-    font-size: 0.55rem;
-    letter-spacing: 0.14em;
+    font-size: 0.5rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    padding: 0.2rem 0.55rem;
-    border: 1px solid rgba(36,139,203,0.3);
-    color: #79bfe4;
-    border-radius: 2px;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--mid);
+    border-radius: 0;
     text-decoration: none;
     transition: all 0.15s;
+    background: none;
   }
   .css-tag:hover {
-    background: #248bcb;
-    border-color: #248bcb;
-    color: #fff !important;
-  }
-  .css-archive-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 2px solid #000;
-    padding-bottom: 0.6rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
-  }
-  .css-archive-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  .css-archive-count {
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #666;
-  }
-  @media (max-width: 600px) {
-    .css-grid { grid-template-columns: 1fr; }
+    border-color: var(--blue);
+    color: var(--blue) !important;
+    background: none;
   }
 </style>
 
